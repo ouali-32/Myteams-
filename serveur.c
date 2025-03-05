@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    printf("Server reachable on port %d\n", port);
+    printf("Server reachable on IP 0.0.0.0 port %d\n", port);
 
     int client_sockets[MAX_CLIENTS] = {0};
     fd_set readfds;
