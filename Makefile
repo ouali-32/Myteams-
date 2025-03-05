@@ -5,13 +5,6 @@ LDFLAGS =
 
 # Noms des exécutables
 SERVER_EXEC = serveur
-
-fclean: clean
-    rm -f $(SERVER_EXEC) $(CLIENT_EXEC)
-
-re: fclean all
-
-.PHONY: all clean fclean re run
 CLIENT_EXEC = client
 SCRIPT = script.sh
 
@@ -40,11 +33,16 @@ $(CLIENT_EXEC): $(CLIENT_OBJ)
 
 # Nettoyage des fichiers générés
 clean:
-	rm -f $(SERVER_EXEC) $(CLIENT_EXEC) $(SERVER_OBJ) $(CLIENT_OBJ)
+	rm -f $(SERVER_OBJ) $(CLIENT_OBJ)
+
+fclean: clean
+	rm -f $(SERVER_EXEC) $(CLIENT_EXEC)
+
+re: fclean all
 
 # Lancement du script
 run: all
 	./$(SCRIPT)
 
 # Phony targets (pour éviter les conflits avec des fichiers du même nom)
-.PHONY: all clean run
+.PHONY: all clean fclean re run
