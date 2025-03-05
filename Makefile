@@ -5,6 +5,13 @@ LDFLAGS =
 
 # Noms des exécutables
 SERVER_EXEC = serveur
+
+fclean: clean
+    rm -f $(SERVER_EXEC) $(CLIENT_EXEC)
+
+re: fclean all
+
+.PHONY: all clean fclean re run
 CLIENT_EXEC = client
 SCRIPT = script.sh
 
